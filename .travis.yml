@@ -15,7 +15,7 @@ before_install:
 install:
   # Use sed to replace the SSH URL with the public URL, then initialize submodules
   # - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
-  # - git submodule update --init --recursive
+  ## - git submodule update --init --recursive
 
   - npm install -g hexo-cli
   - npm install
