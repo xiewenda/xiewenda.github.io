@@ -1,0 +1,32 @@
+language: node_js
+node_js:
+  - "4"
+
+# Handle git submodules myself
+git:
+  submodules: false
+
+before_install:
+  - echo $SSH_KEY | base64 --decode > ~/.ssh/id_rsa
+  - chmod 0600 ~/.ssh/id_rsa
+  - echo $SSH_PUBLIC_KEY | base64 --decode > ~/.ssh/id_rsa.pub
+  - chmod 0644 ~/.ssh/id_rsa.pub
+
+install:
+  # Use sed to replace the SSH URL with the public URL, then initialize submodules
+  # - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+  # - git submodule update --init --recursive
+
+  - npm install -g hexo-cli
+  - npm install
+
+before_script:
+  - git config --global user.name 'Travis CI'
+  - git config --global user.email 'travis-ci@travis-ci.org'
+
+# command to run tests
+script:
+  - hexo generate
+
+after_success:
+  - hexo deploy
