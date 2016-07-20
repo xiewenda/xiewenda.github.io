@@ -15,14 +15,14 @@ before_install:
 install:
   # Use sed to replace the SSH URL with the public URL, then initialize submodules
   # - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
-  ## - git submodule update --init --recursive
+  # - git submodule update --init --recursive
 
   - npm install -g hexo-cli
   - npm install
 
 before_script:
-  - git config --global user.name 'Travis CI'
-  - git config --global user.email 'travis-ci@travis-ci.org'
+  - git config --global user.name 'xiewenda'
+  - git config --global user.email 'xwd4java@163.com'
 
 # command to run tests
 script:
