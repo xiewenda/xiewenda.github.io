@@ -11,7 +11,8 @@ before_install:
   - chmod 0600 ~/.ssh/id_rsa
   - echo $SSH_PUBLIC_KEY > ~/.ssh/id_rsa.pub
   - chmod 0644 ~/.ssh/id_rsa.pub
-  - cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
+  - eval "$(ssh-agent -s)"
+  - ssh-add ~/.ssh/id_rsa
 
 install:
   # Use sed to replace the SSH URL with the public URL, then initialize submodules
