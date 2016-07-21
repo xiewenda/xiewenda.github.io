@@ -16,7 +16,9 @@ before_install:
   - cat /etc/ssh/sshd_config
   - sudo cp /home/travis/.ssh/id_rsa /root/.ssh/
   - sudo cp /home/travis/.ssh/id_rsa.pub /root/.ssh/
-  - cat /root/.ssh/id_rsa
+  - chmod 0600 /root/.ssh/id_rsa
+  - chmod 0644 /root/.ssh/id_rsa.pub
+  - sudo cat /root/.ssh/id_rsa
   - eval "$(ssh-agent -s)"
   - sudo ssh-add /root/.ssh/id_rsa
 
