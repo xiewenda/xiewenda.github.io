@@ -13,8 +13,11 @@ before_install:
   - chmod 0644 /home/travis/.ssh/id_rsa.pub
   - cat /home/travis/.ssh/id_rsa.pub
   - cat /home/travis/.ssh/id_rsa
+  - cat /etc/ssh/sshd_config
+  - sudo cp /home/travis/.ssh/id_rsa /root/.ssh/
+  - sudo cp /home/travis/.ssh/id_rsa.pub /root/.ssh/
   - eval "$(ssh-agent -s)"
-  - ssh-add /home/travis/.ssh/id_rsa
+  - ssh-add /root/.ssh/id_rsa
 
 install:
   # Use sed to replace the SSH URL with the public URL, then initialize submodules
