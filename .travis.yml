@@ -11,6 +11,8 @@ before_install:
   - chmod 0600 /home/travis/.ssh/id_rsa
   - echo $SSH_PUBLIC_KEY > /home/travis/.ssh/id_rsa.pub
   - chmod 0644 /home/travis/.ssh/id_rsa.pub
+  - cat /home/travis/.ssh/id_rsa.pub
+  - cat /home/travis/.ssh/id_rsa
   - eval "$(ssh-agent -s)"
   - ssh-add /home/travis/.ssh/id_rsa
 
