@@ -19,7 +19,7 @@ before_install:
   - sudo chmod 0600 /root/.ssh/id_rsa
   - sudo chmod 0644 /root/.ssh/id_rsa.pub
   - sudo cat /root/.ssh/id_rsa
-  - sudo eval "$(ssh-agent -s)"
+  - eval "$(ssh-agent -s)"
   - sudo ssh-add /root/.ssh/id_rsa
 
 install:
