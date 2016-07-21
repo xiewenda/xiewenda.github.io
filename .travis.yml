@@ -13,9 +13,10 @@ before_install:
   - chmod 0644 /home/travis/.ssh/id_rsa.pub
   - cat /home/travis/.ssh/id_rsa.pub
   - cat /home/travis/.ssh/id_rsa
-  - cat /etc/ssh/sshd_config
+  - cat /etc/ssh/sshd_config(5)
   - sudo cp /home/travis/.ssh/id_rsa /root/.ssh/
   - sudo cp /home/travis/.ssh/id_rsa.pub /root/.ssh/
+  - sudo cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
   - sudo chmod 0600 /root/.ssh/id_rsa
   - sudo chmod 0644 /root/.ssh/id_rsa.pub
   - sudo cat /root/.ssh/id_rsa
