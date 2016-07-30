@@ -6,7 +6,9 @@ node_js:
 git:
   submodules: false
 addons:
-  ssh_known_hosts: github.com
+  ssh_known_hosts:
+  - github.com
+  - 192.30.253.113
   
 before_install:
   - echo $SSH_KEY > ~/.ssh/id_rsa
