@@ -8,7 +8,7 @@ git:
 addons:
   ssh_known_hosts:
   - github.com
-  - 192.30.253.113
+  - 192.30.253.112
   
 before_install:
   - echo $SSH_KEY > ~/.ssh/id_rsa
