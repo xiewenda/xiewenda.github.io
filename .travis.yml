@@ -5,15 +5,18 @@ node_js:
 # Handle git submodules myself
 git:
   submodules: false
-
+addons:
+  ssh_known_hosts: github.com
+  
 before_install:
-  - echo $SSH_KEY > /home/travis/.ssh/id_rsa
-  - chmod 0600 /home/travis/.ssh/id_rsa
-  - echo $SSH_PUBLIC_KEY > /home/travis/.ssh/id_rsa.pub
-  - chmod 0644 /home/travis/.ssh/id_rsa.pub
-  - cat /home/travis/.ssh/id_rsa.pub
-  - cat /home/travis/.ssh/id_rsa
-  - cat /etc/ssh/sshd_config
+  - echo $SSH_KEY > ~/.ssh/id_rsa
+  - chmod 0600 ~/.ssh/id_rsa
+  - echo $SSH_PUBLIC_KEY > ~/.ssh/id_rsa.pub
+  - chmod 0644 ~/.ssh/id_rsa.pub
+  - cat ~/.ssh/id_rsa.pub
+  - cat ~/.ssh/id_rsa
+  - cat ~/.ssh/known_hosts
+  # - cat /etc/ssh/sshd_config
   # - sudo chmod 0600 /root/.ssh/id_rsa
   # - sudo chmod 0644 /root/.ssh/id_rsa.pub
   # - sudo cat /root/.ssh/id_rsa
