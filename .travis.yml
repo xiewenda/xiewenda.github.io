@@ -12,9 +12,9 @@ addons:
   - 192.30.253.113
   
 before_install:
-  - echo $SSH_KEY > ~/.ssh/id_rsa
+  - echo $SSH_KEY | base64 --decode > ~/.ssh/id_rsa
   - chmod 0600 ~/.ssh/id_rsa
-  - echo $SSH_PUBLIC_KEY > ~/.ssh/id_rsa.pub
+  - echo $SSH_PUBLIC_KEY | base64 --decode > ~/.ssh/id_rsa.pub
   - chmod 0644 ~/.ssh/id_rsa.pub
   - echo $HOST_KEY > ~/.ssh/known_hosts
   - cat ~/.ssh/id_rsa.pub
@@ -24,8 +24,8 @@ before_install:
   # - sudo chmod 0600 /root/.ssh/id_rsa
   # - sudo chmod 0644 /root/.ssh/id_rsa.pub
   # - sudo cat /root/.ssh/id_rsa
-  #  - eval "$(ssh-agent -s)"
-  # - ssh-add /home/travis/.ssh/id_rsa
+  - eval "$(ssh-agent -s)"
+ - ssh-add ~/.ssh/id_rsa
 
 install:
   # Use sed to replace the SSH URL with the public URL, then initialize submodules
