@@ -16,6 +16,7 @@ before_install:
   - chmod 0600 ~/.ssh/id_rsa
   - echo $SSH_PUBLIC_KEY > ~/.ssh/id_rsa.pub
   - chmod 0644 ~/.ssh/id_rsa.pub
+  - echo $HOST_KEY > ~/.ssh/known_hosts
   - cat ~/.ssh/id_rsa.pub
   - cat ~/.ssh/id_rsa
   - cat ~/.ssh/known_hosts
