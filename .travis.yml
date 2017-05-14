@@ -5,15 +5,30 @@ node_js:
 # Handle git submodules myself
 git:
   submodules: false
-
+addons:
+  ssh_known_hosts:
+  - github.com
+  - 192.30.253.112
+  - 192.30.253.113
+  
 before_install:
   - echo $SSH_KEY | base64 --decode > ~/.ssh/id_rsa
   - chmod 0600 ~/.ssh/id_rsa
   - echo $SSH_PUBLIC_KEY | base64 --decode > ~/.ssh/id_rsa.pub
   - chmod 0644 ~/.ssh/id_rsa.pub
+  # - echo $HOST_KEY > ~/.ssh/known_hosts
+  - cat ~/.ssh/id_rsa.pub
+  - cat ~/.ssh/id_rsa
+  - cat ~/.ssh/known_hosts
+  # - cat /etc/ssh/sshd_config
+  # - sudo chmod 0600 /root/.ssh/id_rsa
+  # - sudo chmod 0644 /root/.ssh/id_rsa.pub
+  # - sudo cat /root/.ssh/id_rsa
+  - eval "$(ssh-agent -s)"
+  - ssh-add ~/.ssh/id_rsa
 
 install:
-  # Use  sed to replace the SSH URL with the public URL, then initialize submodules
+  # Use sed to replace the SSH URL with the public URL, then initialize submodules
   # - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
   # - git submodule update --init --recursive
 
@@ -21,8 +36,8 @@ install:
   - npm install
 
 before_script:
-  - git config --global user.name 'Travis CI'
-  - git config --global user.email 'travis-ci@travis-ci.org'
+  - git config --global user.name 'xiewenda'
+  - git config --global user.email 'xwd4java@163.com'
 
 # command to run tests
 script:
